@@ -23,13 +23,14 @@ Route::get('test/{id}', function ($id) {
 
 //控制的方法要加个get方法才可以访问的到
 Route::controller('test/user', 'UserController');
+Route::get('index', 'Backend\UserController@index');
 
 //多个文件夹加个命名空间  get  post   any  表示能接收所有请求
 Route::any('user/login', ['as' => 'login', 'uses' => 'Backend\UserController@login']);
 Route::match(['post', 'get'], 'user/reg', ['as' => 'register', 'uses' => 'Backend\UserController@register']);
 
 
-/*webvision  https://github.com/wilcan/webvision   wilcan  hlcan1234
+/*webvision  https://github.com/wilcan/webvision
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
