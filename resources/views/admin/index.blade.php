@@ -5,15 +5,15 @@
 	<div class="top_left">
 		<div class="logo">后台管理模板</div>
 		<ul>
-			<li><a href="{{url('admin/info')}}" class="active">首页</a></li>
+			<li><a href="{{url('admin/index/info')}}" class="active">首页</a></li>
 			<li><a href="#">管理页</a></li>
 		</ul>
 	</div>
 	<div class="top_right">
 		<ul>
 			<li>管理员：admin</li>
-			<li><a href="{{url('admin/changepass')}}" target="main">修改密码</a></li>
-			<li><a href="{{url('admin/quit')}}">退出</a></li>
+			<li><a href="{{url('admin/index/changepass')}}" target="main">修改密码</a></li>
+			<li><a href="{{url('admin/login/quit')}}">退出</a></li>
 		</ul>
 	</div>
 </div>
@@ -53,7 +53,7 @@
 
 <!--主体部分 开始-->
 <div class="main_box">
-	<iframe src="{{url('admin/info')}}" frameborder="0" width="100%" height="100%" name="main"></iframe>
+	<iframe src="{{url('admin/index/info')}}" frameborder="0" width="100%" height="100%" name="main"></iframe>
 </div>
 <!--主体部分 结束-->
 

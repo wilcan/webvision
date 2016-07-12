@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Admin\Controllers;
 
 use App\Http\Model\User;
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class LoginController extends CommonController
                 return back()->with('msg','用户名或密码错误！');
             }
             session(['user' => $user]);
-            return redirect('admin/index');
+            return redirect('admin/index/index');
         } else {
         	return view('admin.login');
     	}
@@ -41,7 +41,7 @@ class LoginController extends CommonController
     public function quit()
     {
         session(['user'=>null]);
-        return redirect('admin/login');
+        return redirect('admin/login/login');
     }
 
 }
