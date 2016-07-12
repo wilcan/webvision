@@ -45,5 +45,15 @@ Route::group(['before' => 'auth'], function() {
 	Route::get('user/dashboard', ['as' => 'dashboard', 'uses' => 'Backend\UserController@getDashboard']);
 });
 Route::group(['middleware' => ['web']], function () {
-    //
+	Route::any('admin/login', 'admin\LoginController@login');
+	Route::get('admin/code', 'admin\LoginController@code');
 });
+Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'], function () {
+	Route::get('index', 'IndexController@index');
+	Route::get('info', 'IndexController@info');
+	Route::get('quit', 'LoginController@quit');
+	Route::any('changepass', 'IndexController@changepass');
+	Route::resource('category', 'CategoryController');
+
+});
+
