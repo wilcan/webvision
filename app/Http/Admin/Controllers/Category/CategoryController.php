@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Admin\Controllers;
+namespace App\Http\Admin\Controllers\General;
 
+use App\Http\Admin\Controllers\CommonController;
 use App\Http\Model\Category;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class CategoryController extends CommonController

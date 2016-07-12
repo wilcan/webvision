@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Admin\Controllers;
+namespace App\Http\Admin\Controllers\General;
 
+use App\Http\Admin\Controllers\CommonController;
 use App\Http\Model\User;
 use Illuminate\Http\Request;
 
