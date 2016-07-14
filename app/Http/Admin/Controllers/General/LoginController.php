@@ -21,6 +21,7 @@ class LoginController extends CommonController
                 return back()->with('msg','验证码错误！');
             }
             $user = User::first();
+//            echo Crypt::encrypt('123456');exit;
             if ($user->user_name != $input['user_name'] || Crypt::decrypt($user->user_pass) != $input['user_pass']){
                 return back()->with('msg','用户名或密码错误！');
             }
