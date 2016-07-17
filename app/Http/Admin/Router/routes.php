@@ -12,17 +12,19 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 //基础登录路由无限制
-Route::group(['middleware' => ['web'],'prefix'=>'admin','namespace'=>'General'], function () {
+Route::group(['prefix'=>'admin','namespace'=>'General'], function () {
     Route::any('login/login','LoginController@login');
     Route::get('login/code','LoginController@code');
 });
 //加入中间件路由，有路由限制
-Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'General'], function () {
+Route::group(['middleware' => ['admin.login'],'prefix'=>'admin','namespace'=>'General'], function () {
     Route::get('index/index', 'IndexController@index');
     Route::get('index/info', 'IndexController@info');
     Route::get('login/quit', 'LoginController@quit');
     Route::any('index/changepass', 'IndexController@changepass');
 });
-Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Category'], function () {
+Route::group(['middleware' => ['admin.login'],'prefix'=>'admin','namespace'=>'Category'], function () {
+    Route::post('category/changeorder', 'CategoryController@changeorder');
     Route::resource('category', 'CategoryController');
+
 });

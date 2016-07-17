@@ -1,20 +1,28 @@
 <?php
 
-namespace App\Http\Admin\Controllers\General;
+namespace App\Http\Admin\Controllers\Category;
 
 use App\Http\Admin\Controllers\CommonController;
+use App\Http\Admin\Services\CategoryService;
 use App\Http\Model\Category;
+use App\Http\Orms\GetTree;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class CategoryController extends CommonController
 {
+    protected $_categoryService;
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->_categoryService = $categoryService;
+    }
+
     //get. admin/category 全部分类列表
     public function index()
     {
-        $categorys = Category::all();
-
-        return view('admin.category.index')->with('data',$categorys);
+        $datas = $this->_categoryService->categorys();//获取分类数据
+        return view('admin.category.index')->with('data',$datas);
     }
     //POST.admin/category  
     public function store()
@@ -45,5 +53,23 @@ class CategoryController extends CommonController
     public function edit()
     {
         
+    }
+
+    public function changeorder()
+    {
+        $input = Input::all();
+        $res = $this->_categoryService->catechangesort($input);
+        if ($res){
+            $data = [
+              'status'=>0,
+              'msg'=>'分类排序更新成功！'
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'分类排序更新失败！'
+            ];
+        }
+        return $data;
     }
 }

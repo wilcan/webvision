@@ -62,11 +62,11 @@
                 <tr>
                     <td class="tc"><input type="checkbox" name="id[]" value="59"></td>
                     <td class="tc">
-                        <input type="text" name="ord[]" value="0">
+                        <input type="text" name="ord[]" value="{{$v->cate_order}}" onChange="change(this,'{{$v->cate_id}}')">
                     </td>
                     <td class="tc">{{$v->cate_id}}</td>
                     <td>
-                        <a href="#">{{$v->cate_name}}</a>
+                        <a href="#">{{$v->_cate_name}}</a>
                     </td>
                     <td>{{$v->cate_title}}</td>
                     <td>{{$v->cate_view}}</td>
@@ -114,4 +114,13 @@
     </div>
 </form>
 <!--搜索结果页面 列表 结束-->
+<script>
+    function change(obj,cate_id) {
+        $.post('{{url('admin/category/changeorder')}}',
+                {'_token':'{{csrf_token()}}',cate_id:cate_id,cate_order:obj.value},function (data) {
+                    
+                        layer.msg(data.msg);
+                })
+    }
+</script>
 @endsection

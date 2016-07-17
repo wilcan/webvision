@@ -1,4 +1,4 @@
 <?php
-class LoginService extends ServiceBase{
+class LoginService extends \App\Http\Admin\Services\BaseService{
 	
 }
