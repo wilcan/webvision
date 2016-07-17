@@ -74,8 +74,8 @@
                     <td>2014-03-15 21:11:01</td>
                     <td></td>--}}
                     <td>
-                        <a href="#">修改</a>
-                        <a href="#">删除</a>
+                        <a href="{{url('admin/category/'.$v->cate_id.'/edit')}}">修改</a>
+                        <a href="{{url('admin/category/'.$v->cate_id.'/edit')}}">删除</a>
                     </td>
                 </tr>
                 @endforeach
@@ -118,7 +118,7 @@
     function change(obj,cate_id) {
         $.post('{{url('admin/category/changeorder')}}',
                 {'_token':'{{csrf_token()}}',cate_id:cate_id,cate_order:obj.value},function (data) {
-                    
+
                         layer.msg(data.msg);
                 })
     }

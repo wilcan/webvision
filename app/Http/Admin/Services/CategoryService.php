@@ -19,10 +19,30 @@ class CategoryService extends BaseService
         return $gettree->getTree($categorys,'cate_name','cate_id','cate_pid');//构建分类数据树形结构        
     }
 
-    public function catechangesort($input)
+    public function cateChangesort($input)
     {
         $cate = Category::getById($input['cate_id']);
         $cate->cate_order = $input['cate_order'];
         return Category::updata($cate);
+    }
+
+    public function getCateByCondition($where)
+    {
+        return Category::getByCondition($where);
+    }
+
+    public function insertCategory($data)
+    {
+        return Category::insertData($data);
+    }
+
+    public function getfield($id)
+    {
+        return Category::getById($id);
+    }
+
+    public function updateData($where,$data)
+    {
+        return Category::updateByCondition($where,$data);
     }
 }
