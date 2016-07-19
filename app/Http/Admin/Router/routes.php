@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\AuthController;
 | and give it the controller to call when that URI is requested.
 |
 */
+//加入中间件路由，有路由限制
+Route::group(['middleware' => ['admin.login'],'prefix'=>'admin'], function () {
+    Route::any('common/uploadimage', 'CommonController@uploadImage');
+});
 //基础登录路由无限制
 Route::group(['prefix'=>'admin','namespace'=>'General'], function () {
     Route::any('login/login','LoginController@login');
@@ -25,6 +29,6 @@ Route::group(['middleware' => ['admin.login'],'prefix'=>'admin','namespace'=>'Ge
 });
 Route::group(['middleware' => ['admin.login'],'prefix'=>'admin','namespace'=>'Category'], function () {
     Route::post('category/changeorder', 'CategoryController@changeorder');
-    Route::resource('category', 'CategoryController');
-
+    Route::resource('article','ArticleController');
+    Route::resource('category','CategoryController');
 });

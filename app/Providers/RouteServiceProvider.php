@@ -16,6 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
     protected $adminNamespace = 'App\Http\Admin\Controllers';
+    protected $homeNamespace = 'App\Http\Home\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -62,6 +63,11 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->adminNamespace, 'middleware' => 'web',
         ], function ($router) {
             require app_path('Http/Admin/Router/routes.php');
+        });        
+        $router->group([
+            'namespace' => $this->homeNamespace, 'middleware' => 'web',
+        ], function ($router) {
+            require app_path('Http/Home/Router/routes.php');
         });
     }
 }
