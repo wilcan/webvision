@@ -5,9 +5,9 @@
  * Date: 2016/7/17
  * Time: 23:03
  */
-namespace App\Http\Admin\Services;
+namespace App\Http\Admin\Services\General;
 use App\Http\Model\User;
-
+use App\Http\Admin\Services\BaseService;
 class UserService extends BaseService
 {
     public function getPassword($where)

@@ -5,11 +5,11 @@
  * Date: 2016/7/15
  * Time: 20:10
  */
-namespace App\Http\Admin\Services;
+namespace App\Http\Admin\Services\Category;
 
 use App\Http\Model\Category;
 use App\Http\Orms\GetTree;
-
+use App\Http\Admin\Services\BaseService;
 class CategoryService extends BaseService
 {
     public function categorys()

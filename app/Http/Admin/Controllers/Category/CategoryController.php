@@ -3,7 +3,7 @@
 namespace App\Http\Admin\Controllers\Category;
 
 use App\Http\Admin\Controllers\CommonController;
-use App\Http\Admin\Services\CategoryService;
+use App\Http\Admin\Services\Category\CategoryService;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;

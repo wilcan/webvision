@@ -4,7 +4,7 @@ namespace App\Http\Home\Controllers\Article;
 
 use App\Http\Admin\Controllers\CommonController;
 use App\Http\Requests;
-use App\Http\Home\Services\ArticleService;
+use App\Http\Home\Services\Article\ArticleService;
 
 class ArticleController extends CommonController
 {
